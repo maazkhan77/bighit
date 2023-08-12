@@ -7,9 +7,15 @@ import asyncHandler from "express-async-handler";
  * @access	public
  */
 
-const getAllTask = asyncHandler(async (req, res) => {
-  const allTask = await Task.find().lean();
-  res.status(200).json(allTask);
+const getTaskByStatus = asyncHandler(async (req, res) => {
+  let { statuses } = req.query;
+  let statusArray = statuses.split(",")
+  const taskBystatus = await Task.find({ status: { $in: statusArray } });
+  if(taskBystatus){
+    res.status(200).json(taskBystatus);
+  } else {
+    res.status(500).json({message: "Something Went Wrong"})
+  }
 });
 
 /**
@@ -104,4 +110,4 @@ const deleteTask = asyncHandler(async (req, res) => {
   res.json(reply);
 });
 
-export { getAllTask, getTaskById, createNewTask, updateTask, deleteTask };
+export { getTaskByStatus, getTaskById, createNewTask, updateTask, deleteTask };
