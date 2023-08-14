@@ -24,7 +24,7 @@ const EditScreen = () => {
 
   const getTaskById = async (id) => {
     try {
-      let { data } = await axios.get("http://127.0.0.1:5000/api/task/" + id);
+      let { data } = await axios.get("https://bighittaskmanager.onrender.com/api/task/" + id);
       setTitle(data.title);
       setDescription(data.description);
       setPriority(data.priority);
