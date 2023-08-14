@@ -45,7 +45,7 @@ function TaskScreen() {
     setLoading(true);
     try {
       let { data } = await axios.get(
-        `http://127.0.0.1:5000/api/task?statuses=${
+        `https://bighittaskmanager.onrender.com/api/task?statuses=${
           status.includes("all") ? "active,ongoing,completed" : status.join(",")
         }`
       );
@@ -58,7 +58,7 @@ function TaskScreen() {
 
   const deleteTask = async () => {
     try {
-      const response = await axios.delete("http://127.0.0.1:5000/api/task", {
+      const response = await axios.delete("https://bighittaskmanager.onrender.com/api/task", {
         data: {
           id: taskId,
           key: "value",
