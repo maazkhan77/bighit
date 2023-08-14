@@ -65,12 +65,12 @@ const EditScreen = () => {
     try {
       if (id) {
          await axios.put(
-          "http://127.0.0.1:5000/api/task",
+          "https://bighittaskmanager.onrender.com/api/task",
           formData
         );
       } else {
          await axios.post(
-          "http://127.0.0.1:5000/api/task",
+          "https://bighittaskmanager.onrender.com/api/task",
           formData
         );
       }
